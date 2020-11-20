@@ -7,7 +7,7 @@ from sklearn.svm import LinearSVC, SVC
 from sklearn import metrics
 
 len_features = 5000
-model_dir = "./model/svm.pkl"
+model_dir = "./model/linersvm.pkl"
 
 print("read model")
 with open(model_dir, 'rb') as f:
@@ -17,11 +17,12 @@ print("read test dataset")
 with open('./tfidf/test_tfidf_{}.pkl'.format(len_features), 'rb') as f:
     x = pkl.load(f)
 
-y = np.load('./data/y_test.npy')
-
+y = np.load('./bow/y_test.npy')
+print("read test dataset end")
 print("begin predict")
 y_pred = clf.predict(x)
 
 # 输出结果
 print(metrics.accuracy_score(y, y_pred))
 print(metrics.confusion_matrix(y, y_pred))
+print(metrics.f1_score(y, y_pred, average="macro"))

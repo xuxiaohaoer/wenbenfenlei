@@ -24,8 +24,7 @@ def get_texts(fullname):
     return texts
 
 
-# print(len(get_alltexts("./data/")))
-# print(len(get_texts("./data/makesifenci.txt")))
+
 if __name__ == '__main__':
     text = get_texts("./data/zhongguogudaishifenci.txt")
     print(len(text))
